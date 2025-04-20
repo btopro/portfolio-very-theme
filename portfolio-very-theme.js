@@ -14,7 +14,7 @@ import "@haxtheweb/simple-cta/simple-cta.js";
  * @demo index.html
  * @element portfolio-very-theme
  */
-export class PortfolioVeryTheme extends DDDPulseEffectSuper(I18NMixin(DDD)) {
+export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
     return "portfolio-very-theme";
@@ -22,8 +22,7 @@ export class PortfolioVeryTheme extends DDDPulseEffectSuper(I18NMixin(DDD)) {
 
   constructor() {
     super();
-    this.title = "Test";
-    this.name = "Michael Nipper"
+    this.title = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -43,7 +42,6 @@ export class PortfolioVeryTheme extends DDDPulseEffectSuper(I18NMixin(DDD)) {
     return {
       ...super.properties,
       title: { type: String },
-      name: { type: String },
     };
   }
 
@@ -61,12 +59,8 @@ export class PortfolioVeryTheme extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
-      h3 {
+      h3 span {
         font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
-      }
-      .navbar {
-        overflow: hidden;
-        background-color: var(--ddd-theme-primary);
       }
     `];
   }
@@ -74,93 +68,19 @@ export class PortfolioVeryTheme extends DDDPulseEffectSuper(I18NMixin(DDD)) {
   // Lit render the HTML
   render() {
     return html`
-      <div class="wrapper">
-        <h1>${this.title}</h1>
-        <p>Welcome, ${this.name}!</p>
-      </div>
-    `;
+<div class="wrapper">
+  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <slot></slot>
+</div>`;
   }
 
+  /**
+   * haxProperties integration via file reference
+   */
   static get haxProperties() {
-    return {
-      type: "element",
-      canScale: true,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Call to action",
-        description: "A simple button with a link to take action.",
-        icon: "image:crop-16-9",
-        color: "orange",
-        tags: ["Layout", "marketing", "button", "link", "url", "design", "cta"],
-        handles: [
-          {
-            type: "link",
-            source: "link",
-            title: "label",
-          },
-        ],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "label",
-            title: "Label",
-            description: "Link label",
-            inputMethod: "textfield",
-            required: true,
-          },
-          {
-            property: "link",
-            title: "Link",
-            description: "Enter a link to any resource",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            noCamera: true,
-            required: true,
-          },
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "hideIcon",
-            title: "Hide icon",
-            description: "Hide the icon used to accent text",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [
-          {
-            property: "icon",
-            title: "Icon",
-            description: "Action link icon",
-            inputMethod: "iconpicker",
-          },
-        ],
-      },
-      saveOptions: {
-        unsetAttributes: ["colors", "element-visible"],
-      },
-      demoSchema: [
-        {
-          tag: "simple-cta",
-          properties: {
-            label: "Click to learn more",
-            link: "https://haxtheweb.org/",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
-
 }
 
 globalThis.customElements.define(PortfolioVeryTheme.tag, PortfolioVeryTheme);
