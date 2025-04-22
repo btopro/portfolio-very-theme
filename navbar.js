@@ -29,7 +29,7 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/screen-template.ar.json", import.meta.url).href +
+        new URL("./locales/portfolio-very-theme.ar.json", import.meta.url).href +
         "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
