@@ -28,9 +28,9 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-    //   localesPath:
-    //     new URL("./locales/screen-template.ar.json", import.meta.url).href +
-    //     "/../",
+      localesPath:
+        new URL("./locales/screen-template.ar.json", import.meta.url).href +
+        "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
   }
@@ -57,7 +57,7 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         /* margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4); */
         width: 100vw;
-        height: 10%;
+        height: 12%;
         position: fixed;
         top: 0;
         left: 0;
@@ -94,24 +94,24 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <div class="sectionButtons">
-    <simple-cta><a href="#1">About</a></simple-cta>
-    <simple-cta><a href=#2>Projects</a></simple-cta>
-    <simple-cta><a href=#3>Skills</a></simple-cta>
-    <simple-cta><a href=#4>Accomplishments</a></simple-cta>
-    <simple-cta><a href=#5>Contact</a></simple-cta>
-  </div>
-</div>`;
+      <div class="wrapper">
+        <div class="sectionButtons">
+          <simple-cta><a href="#1">About</a></simple-cta>
+          <simple-cta><a href=#2>Projects</a></simple-cta>
+          <simple-cta><a href=#3>Skills</a></simple-cta>
+          <simple-cta><a href=#4>Accomplishments</a></simple-cta>
+          <simple-cta><a href=#5>Contact</a></simple-cta>
+        </div>
+      </div>`;
   }
 
   /**
    * haxProperties integration via file reference
 //    */
-//   static get haxProperties() {
-//     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-//       .href;
-//   }
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
 }
 
 globalThis.customElements.define(NavBar.tag, NavBar);

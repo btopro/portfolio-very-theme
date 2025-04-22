@@ -55,12 +55,18 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
-      .wrapper {
+      /* .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
-      }
+      } */
       h3 span {
         font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
+      }
+      scroll-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
       }
     `];
   }
@@ -69,6 +75,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
       <div class="wrapper">
+        <scroll-button></scroll-button>
         <slot></slot>
       </div>
       `

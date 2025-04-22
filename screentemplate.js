@@ -29,9 +29,9 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-    //   localesPath:
-    //     new URL("./locales/screen-template.ar.json", import.meta.url).href +
-    //     "/../",
+      localesPath:
+        new URL("./locales/screen-template.ar.json", import.meta.url).href +
+        "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
   }
@@ -88,19 +88,19 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <h1 class="title">${this.title}</h1>
-  <slot class="content"></slot>
-</div>`;
+      <div class="wrapper">
+        <h1 class="title">${this.title}</h1>
+        <slot class="content"></slot>
+      </div>`;
   }
 
   /**
    * haxProperties integration via file reference
-//    */
-//   static get haxProperties() {
-//     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-//       .href;
-//   }
+    */
+   static get haxProperties() {
+     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+       .href;
+   }
 }
 
 globalThis.customElements.define(ScreenTemplate.tag, ScreenTemplate);
