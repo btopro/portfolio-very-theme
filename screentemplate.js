@@ -59,11 +59,12 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         height: 100vh;
         max-width: 100vw;
         background-color: var(--ddd-theme-default-color);
-        display: flex; /* Use flexbox for layout */
-        align-items: center; /* Center items vertically */
-        justify-content: center; /* Center items horizontally */
-        gap: var(--ddd-spacing-2); /* Add spacing between items */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
+        flex-direction: row; /* Default: image and content side by side */
       }
       .image-container {
         flex: 1;
@@ -77,9 +78,30 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         max-width: 100%;
       }
       ::slotted(img[slot="image"]) {
-        width: 300px; 
+        width: 100%; /* Default: Full width of container */
+        max-width: 350px; /* Limit maximum width */
         height: auto;
         border-radius: var(--ddd-border-radius, 8px);
+      }
+
+      /* Media query for smaller screens */
+      @media (max-width: 768px) {
+        .wrapper {
+          height: auto;
+          width: 100vw;
+          flex-direction: column; /* Stack image and content vertically */
+          padding: var(--ddd-spacing-2); /* Reduce padding */
+        }
+        .image-container, .content-container {
+          flex: unset; /* Remove flex sizing */
+          width: 100%; /* Full width for both containers */
+        }
+        .content-container {
+          font-size: var(--ddd-font-size-xxxs);
+        }
+        ::slotted(img[slot="image"]) {
+          max-width: 150px; /* Allow image to scale down */
+        }
       }
     `];
   }

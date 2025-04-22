@@ -86,6 +86,23 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         justify-content: center;
       }
+
+      @media (max-width: 768px) {
+        .wrapper {
+          flex-wrap: wrap;
+          height: auto;
+          padding: var(--ddd-spacing-1);
+        }
+        .sectionButtons {
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-1);
+        }
+        simple-cta {
+          width: 50%;
+          flex: 1 1 auto;
+          font-size: var(--ddd-font-size-xxxs);
+        }
+      }
     `];
   }
 

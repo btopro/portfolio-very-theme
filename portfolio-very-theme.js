@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
-// import "@haxtheweb/simple-cta/simple-cta.js";
 
 /**
  * `portfolio-very-theme`
@@ -61,14 +60,22 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
       .wrapper {
         height: 100%;
         width: 100%;
-        display: flex; /* Use flexbox for layout */
-        flex-direction: column; /* Stack items vertically */
+        display: flex; 
+        flex-direction: column;
       }
       scroll-button {
         position: fixed;
         bottom: 20px;
         right: 20px;
         z-index: 1000;
+      }
+      /* Media query for smaller screens */
+      @media (max-width: 768px) {
+        .wrapper {
+          padding: var(--ddd-spacing-2); 
+          width: 100vw;
+          height: 100vw;
+        }
       }
     `];
   }
