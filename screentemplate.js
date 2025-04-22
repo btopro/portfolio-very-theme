@@ -56,24 +56,30 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         font-family: var(--ddd-font-navigation);
       }
       .wrapper {
-        /* margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4); */
         height: 100vh;
-        width: 100vw;
+        max-width: 100vw;
         background-color: var(--ddd-theme-default-color);
+        display: flex; /* Use flexbox for layout */
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center items horizontally */
+        gap: var(--ddd-spacing-2); /* Add spacing between items */
+        padding: var(--ddd-spacing-4);
       }
-      h3 span {
-        font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
-      }
-      .title {
-        font-size: var(--ddd-font-size-l);
-        font-weight: var(--ddd-font-weight-bold);
-        padding-top: var(--ddd-spacing-25);
+      .image-container {
+        flex: 1;
         text-align: center;
+        max-width: 100%;
       }
-      .content {
-        font-size: var(--ddd-font-size-m);
-        text-align: center;
+      .content-container {
+        flex: 2;
+        font-size: var(--ddd-font-size-s);
+        text-align: left;
+        max-width: 100%;
+      }
+      ::slotted(img[slot="image"]) {
+        width: 300px; 
+        height: auto;
+        border-radius: var(--ddd-border-radius, 8px);
       }
     `];
   }
@@ -89,14 +95,20 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
       <div class="wrapper">
-        <h1 class="title">${this.title}</h1>
-        <slot class="content"></slot>
-      </div>`;
+        <div class="image-container">
+          <slot name="image"></slot> <!-- Slot for the image -->
+        </div>
+        <div class="content-container">
+          <h1 class="title">${this.title}</h1>
+          <slot class="content"></slot> <!-- Slot for the description -->
+        </div>
+      </div>
+    `;
   }
 
   /**
    * haxProperties integration via file reference
-    */
+   */
    static get haxProperties() {
      return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
        .href;

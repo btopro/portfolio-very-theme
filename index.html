@@ -4,17 +4,23 @@
 <head>
   <base href="/">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, viewport-fit=cover" />
   <meta name="Description" content="Demonstration for portfolio-very-theme">
 
   <style>
     :root, html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
-    /* #demo {
-      margin: var(--ddd-spacing-2);
-    } */
+    #demo {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
   </style>
   <title>portfolio-very-theme</title>
 </head>
@@ -23,31 +29,34 @@
   <div id="demo">
     <nav-bar></nav-bar>
     <portfolio-very-theme title="Portfolio">
-      <screen-template title="About" id="1" color="beaverBlue">
+      <screen-template title="About" id="About" color="beaverBlue">
+        <img slot="image" src="https://media.licdn.com/dms/image/v2/D5603AQEnuDgBnurJtg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1682417288956?e=2147483647&v=beta&t=dMAWxLa3f0QKMP4iGLpd5m4oqhtkueyHN-mcuZIXzSQ" alt="Michael Nipper">
         <div>
-          <img src="https://media.licdn.com/dms/image/v2/D5603AQEnuDgBnurJtg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1682417288956?e=2147483647&v=beta&t=dMAWxLa3f0QKMP4iGLpd5m4oqhtkueyHN-mcuZIXzSQ" alt="Michael Nipper">
           <p>Hi! My name is Michael Nipper and I am a junior Cybersecurity Analytics and Operations Student at Penn State University. 
             Within my major, I am focused on Law and Policy. I have reached Dean's List in the Spring of 2024 and Fall of 2024. My 
             current GPA as of Spring 2025 is 3.5. I am projected to graduate in December 2026. My current research is in how artificial 
             intelligence learning models can be used to accurately predict sports scores and automatically set betting odds.</p>
         </div>
       </screen-template>
-      <screen-template title="Projects" id="2" color="nittanyNavy">
+      <screen-template title="Work Experience" id="Work-Experience" color="nittanyNavy">
+        <img slot="image" src="https://media.yourobserver.com/img/photos/2022/10/18/401092_standard_t1100.jpeg?31a214c4405663fd4bc7e33e8c8cedcc07d61559" alt="Lowe's">
         <div>
           <p>Placeholder</p>
         </div>
       </screen-template>
-      <screen-template title="Skills" id="3" color="beaverBlue">
+      <screen-template title="Skills" id="Skills" color="slateGray">
+        <img slot="image" src="https://i0.wp.com/junilearning.com/wp-content/uploads/2024/01/image-57.jpeg?resize=800%2C534&ssl=1" alt="Code Image">
         <div>
           <p>Placeholder</p>
         </div>
       </screen-template>
-      <screen-template title="Accomplishments" id="4" color="beaverBlue">
+      <screen-template title="Projects" id="Projects" color="potential75">
+        <img slot="image" src="https://www.augustachronicle.com/gcdn/authoring/2019/01/07/NAUG/ghows-GA-7ee20731-7304-6f22-e053-0100007f5798-3b6c7181.jpeg?width=660&height=522&fit=crop&format=pjpg&auto=webp" alt="Cyberpatriot">
         <div>
           <p>Placeholder</p>
         </div>
       </screen-template>
-      <screen-template title="Contact" id="5" color="beaverBlue">
+      <screen-template title="Contact" id="Contact" color="beaverBlue">
         <div>
           <p>Placeholder</p>
         </div>

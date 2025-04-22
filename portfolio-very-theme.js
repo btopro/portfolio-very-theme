@@ -54,13 +54,15 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
       }
-      /* .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-      } */
-      h3 span {
-        font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
+      .wrapper {
+        height: 100%;
+        width: 100%;
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack items vertically */
       }
       scroll-button {
         position: fixed;

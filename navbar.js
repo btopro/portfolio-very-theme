@@ -52,20 +52,18 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
+        width: 100%;
       }
       .wrapper {
         /* margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4); */
-        width: 100vw;
+        width: 100%;
         height: 12%;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 1000;
         background-color: var(--ddd-theme-default-nittanyNavy);
-      }
-      h3 span {
-        font-size: var(--portfolio-very-theme-label-font-size, var(--ddd-font-size-s));
       }
       .title {
         font-size: var(--ddd-font-size-l);
@@ -96,11 +94,11 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <div class="wrapper">
         <div class="sectionButtons">
-          <simple-cta><a href="#1">About</a></simple-cta>
-          <simple-cta><a href=#2>Projects</a></simple-cta>
-          <simple-cta><a href=#3>Skills</a></simple-cta>
-          <simple-cta><a href=#4>Accomplishments</a></simple-cta>
-          <simple-cta><a href=#5>Contact</a></simple-cta>
+          <simple-cta><a href="#About">About</a></simple-cta>
+          <simple-cta><a href=#Work-Experience>Work Experience</a></simple-cta>
+          <simple-cta><a href=#Skills>Skills</a></simple-cta>
+          <simple-cta><a href=#Projects>Projects</a></simple-cta>
+          <simple-cta><a href=#Contact>Contact</a></simple-cta>
         </div>
       </div>`;
   }
