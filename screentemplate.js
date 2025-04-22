@@ -89,8 +89,8 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         .wrapper {
           height: auto;
           width: 100vw;
-          flex-direction: column; /* Stack image and content vertically */
-          padding: var(--ddd-spacing-2); /* Reduce padding */
+          flex-direction: column-reverse;
+          padding: var(--ddd-spacing-2);
         }
         .image-container, .content-container {
           flex: unset; /* Remove flex sizing */
@@ -121,7 +121,7 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
           <slot name="image"></slot> <!-- Slot for the image -->
         </div>
         <div class="content-container">
-          <h1 class="title">${this.title}</h1>
+          <h1 class="title"><u>${this.title}</u></h1>
           <slot class="content"></slot> <!-- Slot for the description -->
         </div>
       </div>

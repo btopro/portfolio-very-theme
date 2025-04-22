@@ -21,6 +21,7 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
+    this._width = 1080;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -40,6 +41,7 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      _width: { type: Number },
     };
   }
 
@@ -86,7 +88,22 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         justify-content: center;
       }
+      details {
+        display: flex;
 
+        flex-direction: column;
+      }
+      summary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        /* flex-direction: column; */
+      }
+      img {
+        display: flex;
+        flex-direction: row;
+      }
       @media (max-width: 768px) {
         .wrapper {
           flex-wrap: wrap;
@@ -108,16 +125,49 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
-    return html`
+    if(this._width < 768){
+      return html`
+      <div class="wrapper">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/640px-Apple_logo_grey.svg.png" alt="Logo" width="20" height="auto">
+        <details>
+          <summary>Menu</summary>
+          <div class="sectionButtons">
+            <simple-cta><a href="#About">About</a></simple-cta>
+            <simple-cta><a href=#Work-Experience>Work Experience</a></simple-cta>
+            <simple-cta><a href=#Skills>Skills</a></simple-cta>
+            <simple-cta><a href=#Projects>Projects</a></simple-cta>
+            <simple-cta><a href=#Contact>Contact</a></simple-cta>
+          </div>
+        </details>
+      </div>`;
+    } else {
+      return html`
       <div class="wrapper">
         <div class="sectionButtons">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/640px-Apple_logo_grey.svg.png" alt="Logo" width="50" height="auto">
           <simple-cta><a href="#About">About</a></simple-cta>
           <simple-cta><a href=#Work-Experience>Work Experience</a></simple-cta>
           <simple-cta><a href=#Skills>Skills</a></simple-cta>
           <simple-cta><a href=#Projects>Projects</a></simple-cta>
-          <simple-cta><a href=#Contact>Contact</a></simple-cta>
+          <simple-cta><a href=#Contact>Contact</a></simple-cta>         
         </div>
       </div>`;
+    }
+
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Number value is the milliseconds between requests
+    this._timerInterval = setInterval(() => this.requestUpdate(), 1000);
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    const elem = this.shadowRoot.querySelector('.wrapper');
+    let widthval = getComputedStyle(elem).getPropertyValue('width');
+    this._width = parseInt(widthval.replace('px', ''));
+    console.log(this._width);
   }
 
   /**
