@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
 /**
  * `screen-template`
@@ -12,7 +11,7 @@ import "@haxtheweb/simple-cta/simple-cta.js";
  * @demo index.html
  * @element nav-bar
  */
-export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
+export class NavBar extends DDDSuper(LitElement) {
 
   static get tag() {
     return "nav-bar";
@@ -20,19 +19,9 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "";
-    this._width = 1080;
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/portfolio-very-theme.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
+    this._width = 0;
+    globalThis.addEventListener('resize', () => {
+      this._width = globalThis.innerWidth;
     });
   }
 
@@ -40,9 +29,15 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
       _width: { type: Number },
     };
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this._width = globalThis.innerWidth;
   }
 
   // Lit scoped styles
@@ -57,8 +52,6 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
       }
       .wrapper {
-        /* margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4); */
         width: 100%;
         height: 12%;
         position: fixed;
@@ -66,11 +59,6 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         left: 0;
         z-index: 1000;
         background-color: var(--ddd-theme-default-nittanyNavy);
-      }
-      .title {
-        font-size: var(--ddd-font-size-l);
-        font-weight: var(--ddd-font-weight-bold);
-        text-align: center;
       }
       .content {
         font-size: var(--ddd-font-size-m);
@@ -117,7 +105,7 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         simple-cta {
           width: 50%;
           flex: 1 1 auto;
-          font-size: var(--ddd-font-size-xxxs);
+          font-size: var(--ddd-font-size-4xs);
         }
       }
     `];
@@ -153,30 +141,8 @@ export class NavBar extends DDDSuper(I18NMixin(LitElement)) {
         </div>
       </div>`;
     }
-
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    // Number value is the milliseconds between requests
-    this._timerInterval = setInterval(() => this.requestUpdate(), 1000);
-  }
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    const elem = this.shadowRoot.querySelector('.wrapper');
-    let widthval = getComputedStyle(elem).getPropertyValue('width');
-    this._width = parseInt(widthval.replace('px', ''));
-    console.log(this._width);
-  }
-
-  /**
-   * haxProperties integration via file reference
-//    */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(NavBar.tag, NavBar);

@@ -54,11 +54,13 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
+        height: 100vh;
+        max-width: 100vw;
       }
       .wrapper {
         height: 100vh;
         max-width: 100vw;
-        background-color: var(--ddd-theme-default-color);
+        background-color: var(--theme-default-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -109,7 +111,7 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
   updated(changedProperties) {
     super.updated(changedProperties);
     if (changedProperties.has('color')) {
-      this.style.setProperty('--ddd-theme-default-color', `var(--ddd-theme-default-${this.color})`);
+      this.style.setProperty('--theme-default-color', `var(--ddd-theme-default-${this.color})`);
     }
   }
 
