@@ -14,6 +14,7 @@
       height: 100%;
       width: 100%;
       box-sizing: border-box;
+      background-color: #1e407c;
     }
     #demo {
       height: 100%;
@@ -21,13 +22,20 @@
       display: flex;
       flex-direction: column;
     }
+    screen-template {
+      display: block;
+      color: var(--ddd-theme-primary);
+      background-color: var(--ddd-theme-accent);
+      font-family: var(--ddd-font-navigation);
+      height: 100vh;
+      max-width: 100vw;
+    }
   </style>
   <title>portfolio-very-theme</title>
 </head>
 
 <body>
   <div id="demo">
-    <nav-bar></nav-bar>
     <portfolio-very-theme title="Portfolio">
       <screen-template title="About" id="About" color="beaverBlue">
         <img slot="image" src="https://media.licdn.com/dms/image/v2/D5603AQEnuDgBnurJtg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1682417288956?e=2147483647&v=beta&t=dMAWxLa3f0QKMP4iGLpd5m4oqhtkueyHN-mcuZIXzSQ" alt="Michael Nipper">
@@ -76,6 +84,5 @@
   </div>
   <script type="module" src="./portfolio-very-theme.js"></script>
   <script type="module" src="./screentemplate.js"></script>
-  <script type="module" src="./navbar.js"></script>
 </body>
 </html>
