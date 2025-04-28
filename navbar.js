@@ -63,6 +63,7 @@ export class NavBar extends DDDSuper(LitElement) {
       .content {
         font-size: var(--ddd-font-size-m);
         text-align: center;
+        color: white;
       }
       .sectionButtons{
         display: flex;
@@ -78,7 +79,6 @@ export class NavBar extends DDDSuper(LitElement) {
       }
       details {
         display: flex;
-
         flex-direction: column;
       }
       summary {
@@ -116,7 +116,7 @@ export class NavBar extends DDDSuper(LitElement) {
     if(this._width < 768){
       return html`
       <div class="wrapper">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/640px-Apple_logo_grey.svg.png" alt="Logo" width="20" height="auto">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/640px-Apple_logo_grey.svg.png" alt="Logo" width="30" height="auto">
         <details>
           <summary>Menu</summary>
           <div class="sectionButtons">

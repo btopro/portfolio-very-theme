@@ -51,11 +51,12 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
         height: 100vh;
         max-width: 100vw;
+        color-scheme: light dark;
+        color: light-dark(white, white);
       }
       .wrapper {
         height: 100vh;
@@ -78,6 +79,7 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         font-size: var(--ddd-font-size-s);
         text-align: left;
         max-width: 100%;
+        color: light-dark(white, white);
       }
       ::slotted(img[slot="image"]) {
         width: 100%; /* Default: Full width of container */

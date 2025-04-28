@@ -30,12 +30,13 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
         width: 100%;
         height: 100%;
         box-sizing: border-box;
+        color-scheme: light dark;
+        color: light-dark(white, white);
       }
       .wrapper {
         height: 100%;
