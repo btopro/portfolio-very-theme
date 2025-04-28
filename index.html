@@ -14,9 +14,9 @@
       height: 100%;
       width: 100%;
       box-sizing: border-box;
-      background-color: #1e407c;
+      background-color: var(--ddd-theme-default-nittanyNavy);
       color-scheme: light dark;
-      color: light-dark(white, white);
+      color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
     }
     #demo {
       height: 100%;
@@ -26,11 +26,9 @@
     }
     screen-template {
       display: block;
-      color: light-dark(white, white);
+      color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
       background-color: var(--ddd-theme-accent);
       font-family: var(--ddd-font-navigation);
-      height: 100vh;
-      max-width: 100vw;
     }
   </style>
   <title>portfolio-very-theme</title>
@@ -69,12 +67,16 @@
             <li>Python</li>
             <li>Linux</li>
             <li>SQL</li>
+          </ul>
+        </div>
+        <div>
           <h3>Personal Skills</h3>
           <ul>
             <li>Teamwork</li>
             <li>Problem Solving</li>
             <li>Leadership</li>
             <li>Communication</li>
+          </ul>
         </div>
       </screen-template>
       <screen-template title="Projects" id="Projects" color="beaver80">
@@ -95,7 +97,7 @@
           <ul>
             <li>LinkedIn: <a href="https://www.linkedin.com/in/michael-nipper" target="_blank">www.linkedin.com/in/michael-nipper</a></li>
             <li>Email: michaelwnipper@gmail.com</li>
-            <li>Phone: 215-539-7682</li>
+            <li>Phone: 215-539-7422</li>
             <li>Github: <a href="https://github.com/michaelnipper3" target="_blank">www.github.com/michaelnipper3</a></li>
           </ul>
         </div>

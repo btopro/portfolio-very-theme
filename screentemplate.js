@@ -22,21 +22,8 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.title = "";
     this.color = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/portfolio-very-theme.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
   }
 
-  // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
@@ -51,12 +38,11 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
         height: 100vh;
         max-width: 100vw;
         color-scheme: light dark;
-        color: light-dark(white, white);
+        color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
       }
       .wrapper {
         height: 100vh;
@@ -64,10 +50,8 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--theme-default-color);
         display: flex;
         align-items: center;
-        justify-content: center;
         gap: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-        flex-direction: row; /* Default: image and content side by side */
+        flex-direction: row;
       }
       .image-container {
         flex: 1;
@@ -79,32 +63,29 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
         font-size: var(--ddd-font-size-s);
         text-align: left;
         max-width: 100%;
-        color: light-dark(white, white);
+        color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
       }
       ::slotted(img[slot="image"]) {
-        width: 100%; /* Default: Full width of container */
-        max-width: 350px; /* Limit maximum width */
+        width: 100%;
+        max-width: 350px;
         height: auto;
         border-radius: var(--ddd-border-radius, 8px);
       }
 
       /* Media query for smaller screens */
-      @media (max-width: 768px) {
+      @media (max-width: 742px) {
         .wrapper {
-          height: auto;
           width: 100vw;
+          height: auto;
+          display: flex;
           flex-direction: column-reverse;
-          padding: var(--ddd-spacing-2);
-        }
-        .image-container, .content-container {
-          flex: unset; /* Remove flex sizing */
-          width: 100%; /* Full width for both containers */
         }
         .content-container {
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--ddd-font-size-4xs);
         }
         ::slotted(img[slot="image"]) {
-          max-width: 150px; /* Allow image to scale down */
+          max-width: 150px;
+          height: auto;
         }
       }
     `];
@@ -122,23 +103,15 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <div class="wrapper">
         <div class="image-container">
-          <slot name="image"></slot> <!-- Slot for the image -->
+          <slot name="image"></slot>
         </div>
         <div class="content-container">
           <h1 class="title">${this.title}</h1>
-          <slot class="content"></slot> <!-- Slot for the description -->
+          <slot class="content"></slot>
         </div>
       </div>
     `;
   }
-
-  /**
-   * haxProperties integration via file reference
-   */
-   static get haxProperties() {
-     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-       .href;
-   }
 }
 
 globalThis.customElements.define(ScreenTemplate.tag, ScreenTemplate);

@@ -36,7 +36,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
         height: 100%;
         box-sizing: border-box;
         color-scheme: light dark;
-        color: light-dark(white, white);
+        color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
       }
       .wrapper {
         height: 100%;
@@ -51,9 +51,8 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
         z-index: 1000;
       }
       /* Media query for smaller screens */
-      @media (max-width: 768px) {
+      @media (max-width: 742px) {
         .wrapper {
-          padding: var(--ddd-spacing-2); 
           width: 100vw;
           height: auto;
         }

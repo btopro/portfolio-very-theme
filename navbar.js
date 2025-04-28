@@ -46,14 +46,15 @@ export class NavBar extends DDDSuper(LitElement) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
+        color-scheme: light dark;
+        color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
+        background-color: var(--ddd-theme-default-nittanyNavy);
         font-family: var(--ddd-font-navigation);
         width: 100%;
       }
       .wrapper {
         width: 100%;
-        height: 12%;
+        height: 14%;
         position: fixed;
         top: 0;
         left: 0;
@@ -63,7 +64,6 @@ export class NavBar extends DDDSuper(LitElement) {
       .content {
         font-size: var(--ddd-font-size-m);
         text-align: center;
-        color: white;
       }
       .sectionButtons{
         display: flex;
@@ -86,13 +86,17 @@ export class NavBar extends DDDSuper(LitElement) {
         justify-content: center;
         align-items: center;
         text-align: center;
-        /* flex-direction: column; */
+        color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
       }
       img {
         display: flex;
         flex-direction: row;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 742px) {
+        :host {
+          color-scheme: light dark;
+          color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-white));
+        }
         .wrapper {
           flex-wrap: wrap;
           height: auto;
@@ -113,7 +117,7 @@ export class NavBar extends DDDSuper(LitElement) {
 
   // Lit render the HTML
   render() {
-    if(this._width < 768){
+    if(this._width < 742){
       return html`
       <div class="wrapper">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/640px-Apple_logo_grey.svg.png" alt="Logo" width="30" height="auto">
@@ -142,7 +146,6 @@ export class NavBar extends DDDSuper(LitElement) {
       </div>`;
     }
   }
-
 }
 
 globalThis.customElements.define(NavBar.tag, NavBar);
