@@ -55,7 +55,7 @@ export class PortfolioVeryTheme extends DDDSuper(I18NMixin(LitElement)) {
         .wrapper {
           padding: var(--ddd-spacing-2); 
           width: 100vw;
-          height: 100vw;
+          height: auto;
         }
       }
     `];

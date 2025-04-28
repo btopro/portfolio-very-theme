@@ -101,7 +101,7 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
           width: 100%; /* Full width for both containers */
         }
         .content-container {
-          font-size: var(--ddd-font-size-xxxs);
+          font-size: var(--ddd-font-size-3xs);
         }
         ::slotted(img[slot="image"]) {
           max-width: 150px; /* Allow image to scale down */
@@ -125,7 +125,7 @@ export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
           <slot name="image"></slot> <!-- Slot for the image -->
         </div>
         <div class="content-container">
-          <h1 class="title"><u>${this.title}</u></h1>
+          <h1 class="title">${this.title}</h1>
           <slot class="content"></slot> <!-- Slot for the description -->
         </div>
       </div>
