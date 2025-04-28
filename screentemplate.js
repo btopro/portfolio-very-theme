@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `screen-template`
@@ -12,7 +11,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * @demo index.html
  * @element screen-template
  */
-export class ScreenTemplate extends DDDSuper(I18NMixin(LitElement)) {
+export class ScreenTemplate extends DDDSuper(LitElement) {
 
   static get tag() {
     return "screen-template";
